@@ -7,17 +7,17 @@
         }
     </style>
     <div class="logo">
-        <h1><a href="dashboard.jsp">Campus Connect </a></h1>
+        <h1><a href="../dashboard.jsp">Campus Connect </a></h1>
     </div>
 
     <nav class="main-nav">
         <ul>
-            <li><a href="dashboard.jsp">Home</a></li>
-            <li><a href="societies.jsp">Societies</a></li>
-            <li><a href="events.jsp">Events</a></li>
+            <li><a href="./dashboard.jsp">Home</a></li>
+            <li><a href="./societies.jsp">Societies</a></li>
+            <li><a href="./events.jsp">Events</a></li>
             <li><a href="notifications.jsp">Notifications</a></li>
-            <li><a href="login.jsp">Login</a></li>
-            <li><a href="register.jsp">Register</a></li>
+            <li><a href="./login.jsp">Login</a></li>
+            <li><a href="./register.jsp">Register</a></li>
         </ul>
     </nav>
 </header>

@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-    <%@ include file="header.jsp" %>
+    <%@ include file="include/header.jsp" %>
     <main class="main-content">
         <section class="hero-section">
             <div class="hero-content">
@@ -101,7 +101,7 @@
             </div>
         </section>
     </main>
-    <%@ include file="footer.jsp" %>
+    <%@ include file="include/footer.jsp" %>
 </div>
 </body>
 

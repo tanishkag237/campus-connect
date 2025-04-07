@@ -10,7 +10,7 @@
         <div class="footer-section">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="dashboard.jsp">Home</a></li>
+                <li><a href="../dashboard.jsp">Home</a></li>
                 <li><a href="#">Societies</a></li>
                 <li><a href="#">Events</a></li>
                 <li><a href="#">Contact Us</a></li>
