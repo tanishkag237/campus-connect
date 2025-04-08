@@ -28,6 +28,6 @@
     </div>
 
     <div class="footer-bottom">
-        <p>&copy; <%= new java.util.Date().getYear() + 1900 %> College Societies. All rights reserved.</p>
+        <p>&copy; <%= new java.util.Date().getYear() + 1900 %> Campus Connect. All rights reserved.</p>
     </div>
 </footer>

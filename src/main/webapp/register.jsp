@@ -8,11 +8,12 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="container">
-  <jsp:include page="include/header.jsp" />
+<div class="container" style="height: 90%;">
+<%--  <jsp:include page="include/header.jsp" />--%>
 
-  <main class="main-content">
-    <div class="auth-form">
+  <main class="main-content" style="background: #041538;">
+    <h2 style="color: white; text-align: center;">WELCOME TO CAMPUS CONNECT</h2>
+    <div class="auth-form" style="padding: 40px; height: 80%; background: #fff;">
       <h2>Register</h2>
 
       <% if(request.getAttribute("errorMessage") != null) { %>
@@ -21,7 +22,7 @@
       </div>
       <% } %>
 
-      <form action="#" method="post">
+      <form action="register" method="post">
         <div class="form-group">
           <label for="fullName">Full Name</label>
           <input type="text" id="fullName" name="fullName" required>
@@ -58,7 +59,7 @@
     </div>
   </main>
 
-  <jsp:include page="include/footer.jsp" />
+<%--  <jsp:include page="include/footer.jsp" />--%>
 </div>
 </body>
 </html>

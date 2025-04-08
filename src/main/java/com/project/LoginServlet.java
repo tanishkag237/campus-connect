@@ -1,27 +1,46 @@
 package com.project;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.project.DBConnection;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
+import java.io.IOException;
+import java.sql.*;
 
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("username");
+
+        String usernameOrEmail = request.getParameter("username");
         String password = request.getParameter("password");
 
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+        try {
+            Connection conn = DBConnection.getConnection();
+            String query = "SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, usernameOrEmail);
+            ps.setString(2, usernameOrEmail);
+            ps.setString(3, password);
 
-        System.out.println("Email: " + email);
-        System.out.println("Password: " + password);
+            ResultSet rs = ps.executeQuery();
 
+            if (rs.next()) {
+                // Login successful, store session attributes if needed
+                HttpSession session = request.getSession();
+                session.setAttribute("username", rs.getString("username"));
+                session.setAttribute("fullName", rs.getString("full_name"));
 
-        if ("tg".equals(email) && "1234".equals(password)) {
-            RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
-            rd.forward(request, response);
-        } else {
+                RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
+                rd.forward(request, response);
+            } else {
+                request.setAttribute("errorMessage", "Invalid username/email or password.");
+                RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
+                rd.forward(request, response);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("errorMessage", "Something went wrong.");
             RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
             rd.forward(request, response);
         }

@@ -5,7 +5,7 @@
          version="3.1">
 
   <welcome-file-list>
-    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>register.jsp</welcome-file>
   </welcome-file-list>
 
   <servlet>
@@ -27,6 +27,17 @@
     <servlet-name>SocietyListServlet</servlet-name>
     <url-pattern>/societies</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>com.project.controller.RegisterServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+
 
 
 </web-app>

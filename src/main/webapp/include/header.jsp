@@ -16,8 +16,8 @@
             <li><a href="${pageContext.request.contextPath}/societies">Societies</a></li>
             <li><a href="./events.jsp">Events</a></li>
             <li><a href="notifications.jsp">Notifications</a></li>
-            <li><a href="./login.jsp">Login</a></li>
-            <li><a href="./register.jsp">Register</a></li>
+            <li><a href="./login.jsp">Logout</a></li>
+<%--            <li><a href="./register.jsp">Register</a></li>--%>
         </ul>
     </nav>
 </header>

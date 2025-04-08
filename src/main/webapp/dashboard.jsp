@@ -18,10 +18,10 @@
                 <h2>Welcome to Campus Connect</h2>
                 <p>Your one-stop platform for all college society information and events.</p>
 
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">Login</a>
-                    <a href="#" class="btn btn-secondary">Register</a>
-                </div>
+<%--                <div class="hero-buttons">--%>
+<%--                    <a href="#" class="btn btn-primary">Login</a>--%>
+<%--                    <a href="#" class="btn btn-secondary">Register</a>--%>
+<%--                </div>--%>
 
             </div>
         </section>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="view-all">
-                <a href="#" class="btn btn-secondary">View All Events</a>
+                <a href="" class="btn btn-secondary">View All Events</a>
             </div>
         </section>
 
@@ -97,7 +97,7 @@
             </div>
 
             <div class="view-all">
-                <a href="#" class="btn btn-secondary">View All Societies</a>
+                <a href="${pageContext.request.contextPath}/societies" class="btn btn-secondary">View All Societies</a>
             </div>
         </section>
     </main>
