@@ -1,14 +1,14 @@
 package com.project.model;
 
 public class Society {
-    private int id;
+    private int soId;
     private String name;
     private String description;
-    private String logoPath;
+    private String logoUrl;
 
-    // Getters & Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    // Getters and setters
+    public int getSoId() { return soId; }
+    public void setSoId(int soId) { this.soId = soId; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -16,6 +16,6 @@ public class Society {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
-    public String getLogoPath() { return logoPath; }
-    public void setLogoPath(String logoPath) { this.logoPath = logoPath; }
+    public String getLogoUrl() { return logoUrl; }
+    public void setLogoUrl(String logoUrl) { this.logoUrl = logoUrl; }
 }

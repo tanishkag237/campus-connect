@@ -13,7 +13,7 @@
     <nav class="main-nav">
         <ul>
             <li><a href="./dashboard.jsp">Home</a></li>
-            <li><a href="./societies.jsp">Societies</a></li>
+            <li><a href="${pageContext.request.contextPath}/societies">Societies</a></li>
             <li><a href="./events.jsp">Events</a></li>
             <li><a href="notifications.jsp">Notifications</a></li>
             <li><a href="./login.jsp">Login</a></li>

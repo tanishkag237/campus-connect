@@ -18,4 +18,15 @@
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>SocietyListServlet</servlet-name>
+    <servlet-class>com.project.controller.SocietyListServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>SocietyListServlet</servlet-name>
+    <url-pattern>/societies</url-pattern>
+  </servlet-mapping>
+
+
 </web-app>
