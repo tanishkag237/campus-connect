@@ -1,23 +1,43 @@
 package com.project.controller;
 
-@WebServlet("/AddSocietyServlet")
+import com.project.dao.SocietyDAO;
+import com.project.model.Society;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.IOException;
+
 public class AddSocietyServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         String name = request.getParameter("name");
         String description = request.getParameter("description");
-        String logoUrl = request.getParameter("logo_url");
+        String logoUrl = request.getParameter("logoUrl"); // from the form
 
-        try (Connection conn = DBConnection.getConnection()) {
-            String sql = "INSERT INTO societies (name, description, logo_url) VALUES (?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, name);
-            stmt.setString(2, description);
-            stmt.setString(3, logoUrl);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        System.out.println("Received name: " + name);
+        System.out.println("Description: " + description);
+        System.out.println("Logo: " + logoUrl);
+
+
+
+        Society society = new Society();
+        society.setName(name);
+        society.setDescription(description);
+        society.setLogoUrl(logoUrl);
+
+        SocietyDAO dao = new SocietyDAO();
+        boolean success = dao.addSociety(society); // 🔹 Here's where we call it
+
+        System.out.println("Added? " + success);
+
+        if (success) {
+            response.sendRedirect("admin/adminDashboard.jsp");  // or anywhere you'd like
+        } else {
+            request.setAttribute("errorMessage", "Failed to add society.");
+            RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
+            rd.forward(request, response);
         }
-
-        response.sendRedirect("AdminDashboardServlet");
     }
 }

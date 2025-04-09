@@ -3,4 +3,56 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <welcome-file-list>
+        <welcome-file>dashboard.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.project.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SocietyListServlet</servlet-name>
+        <servlet-class>com.project.controller.SocietyListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SocietyListServlet</servlet-name>
+        <url-pattern>/societies</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.project.controller.RegisterServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddSocietyServlet</servlet-name>
+        <servlet-class>com.project.controller.AddSocietyServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddSocietyServlet</servlet-name>
+        <url-pattern>/AddSocietyServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+
+
+
 </web-app>
