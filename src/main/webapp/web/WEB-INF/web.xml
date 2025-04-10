@@ -48,10 +48,25 @@
         <url-pattern>/AddSocietyServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>EventsServlet</servlet-name>
+        <servlet-class>com.project.controller.EventsServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>EventsServlet</servlet-name>
+        <url-pattern>/events</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SocietyDetailsServlet</servlet-name>
+        <servlet-class>com.project.controller.SocietyDetailsServlet</servlet-class>
+    </servlet>
 
-
+    <servlet-mapping>
+        <servlet-name>SocietyDetailsServlet</servlet-name>
+        <url-pattern>/SocietyDetailsServlet</url-pattern>
+    </servlet-mapping>
 
 
 

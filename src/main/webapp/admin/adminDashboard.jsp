@@ -16,8 +16,8 @@
 
     <div class="admin-actions">
       <a href="addSociety.jsp" class="btn btn-primary">➕ Add New Society</a>
-      <a href="">✏️ Edit Existing Societies</a>
-<%--      <a href="viewEvents.jsp" class="btn btn-info">📅 View All Events</a>--%>
+      <a href="#">✏️ Edit Existing Societies</a>
+      <a href="viewEvents.jsp" class="btn btn-info">📅 View All Events</a>
     </div>
 
     <section class="updates">

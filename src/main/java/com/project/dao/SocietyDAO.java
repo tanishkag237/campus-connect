@@ -26,8 +26,9 @@ public class SocietyDAO {
                 society.setLogoUrl(rs.getString("logo_url"));
                 societies.add(society);
 
-
+                System.out.println("Fetched Society: " + society.getName());
             }
+            System.out.println("📦 Total Societies Fetched: " + societies.size());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -56,6 +57,44 @@ public class SocietyDAO {
     }
 
 
+    public Society getSocietyById(int soId) {
+        Society society = null;
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "SELECT * FROM societies WHERE so_id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, soId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                society = new Society();
+                society.setSoId(rs.getInt("so_id"));
+                society.setName(rs.getString("name"));
+                society.setDescription(rs.getString("description"));
+                society.setLogoUrl(rs.getString("logo_url"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return society;
+    }
+
+    public boolean updateSociety(Society society) {
+        boolean updated = false;
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "UPDATE societies SET name = ?, description = ?, logo_url = ? WHERE so_id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, society.getName());
+            stmt.setString(2, society.getDescription());
+            stmt.setString(3, society.getLogoUrl());
+            stmt.setInt(4, society.getSoId());
+
+            int rows = stmt.executeUpdate();
+            updated = rows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return updated;
+    }
 
 
 

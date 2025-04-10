@@ -27,7 +27,8 @@
                 </div>
                 <h3><%= s.getName() %></h3>
                 <p><%= s.getDescription() %></p>
-                <a href="#" class="btn btn-small">View Details</a>
+                <a href="SocietyDetailsServlet?so_id=<%= s.getSoId() %>" class="btn btn-small">View Details</a>
+
             </div>
             <%
                 }

@@ -21,9 +21,18 @@ public class DBConnection {
     }
 
     // Method to establish and return connection
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+    public static Connection getConnection() {
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+            System.out.println("✅ Connected to DB");
+        } catch (SQLException e) {
+            System.err.println("❌ DB Connection Failed");
+            e.printStackTrace();
+        }
+        return conn;
     }
+
 
     // Method to safely close connection
     public static void closeConnection(Connection connection) {
