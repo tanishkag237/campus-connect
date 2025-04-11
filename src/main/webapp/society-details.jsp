@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.project.model.Society" %>
 <%@ page import="com.project.model.Event" %>
+<%@ page import="com.project.model.Member" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 
@@ -33,42 +34,30 @@
         <h3>About</h3>
         <p><%= society.getDescription() %></p>
       </div>
-
-      <div class="society-members">
-        <h3>Members</h3>
-        <!-- This would be populated from the database -->
-        <div class="members-list">
-          <div class="member-card">
-            <div class="member-avatar">
-              <img src="images/default-avatar.jpg" alt="Member">
-            </div>
-            <div class="member-info">
-              <h4>John Doe</h4>
-              <p>President</p>
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="member-avatar">
-              <img src="images/default-avatar.jpg" alt="Member">
-            </div>
-            <div class="member-info">
-              <h4>Jane Smith</h4>
-              <p>Vice President</p>
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="member-avatar">
-              <img src="images/default-avatar.jpg" alt="Member">
-            </div>
-            <div class="member-info">
-              <h4>Mike Johnson</h4>
-              <p>Secretary</p>
-            </div>
-          </div>
+      <%
+        List<Member> members = (List<Member>) request.getAttribute("members");
+        if (members != null && !members.isEmpty()) {
+          for (Member member : members) {
+      %>
+      <div class="member-card">
+        <div class="member-avatar">
+          <img src="images/default-avatar.jpg" alt="Member">
+        </div>
+        <div class="member-info">
+          <h4><%= member.getName() %></h4>
+          <p><%= member.getPosition() %></p>
         </div>
       </div>
+      <%
+        }
+      } else {
+      %>
+      <p>No members found for this society.</p>
+      <%
+        }
+      %>
+
+
     </section>
 
     <section class="society-events">
