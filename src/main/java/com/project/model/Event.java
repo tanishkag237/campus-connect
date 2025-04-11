@@ -11,7 +11,20 @@ public class Event {
     private String location;
     private String societyName; // fetched from JOIN
 
-    // Getters and Setters
+    // ✅ Default constructor
+    public Event() {}
+
+    // ✅ Parameterized constructor for easier object creation
+    public Event(int eventId, int societyId, String title, String description, String location, Date eventDate) {
+        this.eventId = eventId;
+        this.societyId = societyId;
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.eventDate = eventDate;
+    }
+
+    // ✅ Getters and Setters
     public int getEventId() {
         return eventId;
     }

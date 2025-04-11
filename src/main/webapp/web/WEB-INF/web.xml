@@ -5,7 +5,7 @@
          version="4.0">
 
     <welcome-file-list>
-        <welcome-file>dashboard.jsp</welcome-file>
+        <welcome-file>home</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -67,6 +67,26 @@
         <servlet-name>SocietyDetailsServlet</servlet-name>
         <url-pattern>/SocietyDetailsServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EventAdminServlet</servlet-name>
+        <servlet-class>com.project.controller.EventAdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EventAdminServlet</servlet-name>
+        <url-pattern>/admin/events</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HomepageServlet</servlet-name>
+        <servlet-class>com.project.controller.HomepageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomepageServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+
 
 
 

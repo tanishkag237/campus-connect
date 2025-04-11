@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("username", rs.getString("username"));
                 session.setAttribute("fullName", rs.getString("full_name"));
 
-                RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/home");
                 rd.forward(request, response);
             } else {
                 request.setAttribute("errorMessage", "Invalid username/email or password.");

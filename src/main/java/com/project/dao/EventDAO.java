@@ -59,7 +59,6 @@ public class EventDAO {
                 event.setDescription(rs.getString("description"));
                 event.setEventDate(rs.getTimestamp("event_date"));
                 event.setLocation(rs.getString("location"));
-//                event.setCreatedAt(rs.getTimestamp("created_at"));
 
                 events.add(event);
             }
@@ -71,4 +70,76 @@ public class EventDAO {
         return events;
     }
 
+    public List<Event> getAllEvents() {
+        List<Event> events = new ArrayList<>();
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM events");
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                int eventId = rs.getInt("event_id");
+                int societyId = rs.getInt("society_id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String location = rs.getString("location");
+                Timestamp eventDate = rs.getTimestamp("event_date");
+
+                Event event = new Event();
+                event.setEventId(eventId);
+                event.setSocietyId(societyId);
+                event.setTitle(title);
+                event.setDescription(description);
+                event.setLocation(location);
+                event.setEventDate(eventDate);
+
+                events.add(event);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return events;
+    }
+
+    public void addEvent(Event event) {
+        String sql = "INSERT INTO events (society_id, title, description, location, event_date) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, event.getSocietyId());
+            stmt.setString(2, event.getTitle());
+            stmt.setString(3, event.getDescription());
+            stmt.setString(4, event.getLocation());
+            stmt.setTimestamp(5, new Timestamp(event.getEventDate().getTime()));
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateEvent(Event event) {
+        String sql = "UPDATE events SET society_id = ?, title = ?, description = ?, location = ?, event_date = ? WHERE event_id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, event.getSocietyId());
+            stmt.setString(2, event.getTitle());
+            stmt.setString(3, event.getDescription());
+            stmt.setString(4, event.getLocation());
+            stmt.setTimestamp(5, new Timestamp(event.getEventDate().getTime()));
+            stmt.setInt(6, event.getEventId());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteEvent(int eventId) {
+        String sql = "DELETE FROM events WHERE event_id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, eventId);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

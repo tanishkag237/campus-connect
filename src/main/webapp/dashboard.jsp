@@ -1,3 +1,6 @@
+<%@ page import="com.project.model.Event" %>
+<%@ page import="com.project.model.Society" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -30,36 +33,39 @@
             <h2>Upcoming Events</h2>
 
             <div class="events-grid">
-<%--                <%--%>
-<%--                    List<Event> upcomingEvents = (List<Event>) request.getAttribute("upcomingEvents");--%>
-<%--                    if (upcomingEvents != null && !upcomingEvents.isEmpty()) {--%>
-<%--                        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy HH:mm");--%>
-<%--                        for (Event event : upcomingEvents) {--%>
-<%--                %>--%>
+                <%
+                    List<Event> upcomingEvents = (List<Event>) request.getAttribute("upcomingEvents");
+
+                    if (upcomingEvents != null && !upcomingEvents.isEmpty()) {
+
+                        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("MMM dd, yyyy HH:mm");
+                        for (Event event : upcomingEvents) {
+
+                %>
                 <div class="event-card">
                     <div class="event-date">
-<%--                        <%= dateFormat.format(event.getEventDate()) %>--%>
-                        <p>23/05/2025</p>
+                        <p><%= sdf.format(event.getEventDate()) %></p>
                     </div>
-                    <h3>EVENT TITLE</h3>
-                    <p>EVENT DESCRIPTION</p>
+                    <h3><%= event.getTitle() %></h3>
+                    <p>Organized By : <%= event.getSocietyName() %></p>
+                    <p><%= event.getDescription() %></p>
                     <div class="event-location">
-                        <span class="location-icon">📍</span> Location:
+                        <span class="location-icon">📍</span> <%= event.getLocation() %>
                     </div>
-                    <a href="#" class="btn btn-small">View Details</a>
                 </div>
-<%--                <%--%>
-<%--                    }--%>
-<%--                } else {--%>
-<%--                %>--%>
+                <%
+                    }
+                } else {
+                %>
                 <p>No upcoming events at the moment.</p>
-<%--                <%--%>
-<%--                    }--%>
-<%--                %>--%>
+                <%
+                    }
+                %>
+
             </div>
 
             <div class="view-all">
-                <a href="" class="btn btn-secondary">View All Events</a>
+                <a href="${pageContext.request.contextPath}/events.jsp" class="btn btn-secondary">View All Events</a>
             </div>
         </section>
 
@@ -67,34 +73,33 @@
             <h2>Featured Societies</h2>
 
             <div class="societies-grid">
-                <!-- This would be populated from the database -->
-                <div class="society-card">
-                    <div class="society-logo">
-                        <img src="#" alt="Programming Club">
-                    </div>
-                    <h3>Programming Club</h3>
-                    <p>A club for programming enthusiasts to learn, collaborate, and build projects together.</p>
-                    <a href="#" class="btn btn-small">View Details</a>
-                </div>
+                <%
+                    List<Society> societies = (List<Society>) request.getAttribute("societies");
 
+                    if (societies != null && !societies.isEmpty()) {
+                        int count = 0;
+                        for (Society society : societies) {
+                            if (count >= 3) break;
+                            count++;
+                %>
                 <div class="society-card">
                     <div class="society-logo">
-                        <img src="#" alt="Drama Society">
+                        <img src="<%= society.getLogoUrl() != null ? society.getLogoUrl() : "images/default-logo.png" %>" alt="<%= society.getName() %>">
                     </div>
-                    <h3>Drama Society</h3>
-                    <p>For students interested in theater, acting, and performance arts.</p>
+                    <h3><%= society.getName() %></h3>
+                    <p><%= society.getDescription() %></p>
                     <a href="#" class="btn btn-small">View Details</a>
                 </div>
-
-                <div class="society-card">
-                    <div class="society-logo">
-                        <img src="#" alt="Debate Club">
-                    </div>
-                    <h3>Debate Club</h3>
-                    <p>Improve your public speaking and debating skills with like-minded peers.</p>
-                    <a href="#" class="btn btn-small">View Details</a>
-                </div>
+                <%
+                    }
+                } else {
+                %>
+                <p>No societies available.</p>
+                <%
+                    }
+                %>
             </div>
+
 
             <div class="view-all">
                 <a href="${pageContext.request.contextPath}/societies" class="btn btn-secondary">View All Societies</a>
