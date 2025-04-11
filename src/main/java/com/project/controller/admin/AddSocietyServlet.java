@@ -1,4 +1,4 @@
-package com.project.controller;
+package com.project.controller.admin;
 
 import com.project.dao.SocietyDAO;
 import com.project.model.Society;
@@ -16,9 +16,9 @@ public class AddSocietyServlet extends HttpServlet {
         String description = request.getParameter("description");
         String logoUrl = request.getParameter("logoUrl"); // from the form
 
-        System.out.println("Received name: " + name);
-        System.out.println("Description: " + description);
-        System.out.println("Logo: " + logoUrl);
+//        System.out.println("Received name: " + name);
+//        System.out.println("Description: " + description);
+//        System.out.println("Logo: " + logoUrl);
 
 
 
@@ -30,7 +30,7 @@ public class AddSocietyServlet extends HttpServlet {
         SocietyDAO dao = new SocietyDAO();
         boolean success = dao.addSociety(society); // 🔹 Here's where we call it
 
-        System.out.println("Added? " + success);
+       // System.out.println("Added? " + success);
 
         if (success) {
             response.sendRedirect("admin/adminDashboard.jsp");  // or anywhere you'd like

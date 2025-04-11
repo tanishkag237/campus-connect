@@ -40,7 +40,7 @@
 
     <servlet>
         <servlet-name>AddSocietyServlet</servlet-name>
-        <servlet-class>com.project.controller.AddSocietyServlet</servlet-class>
+        <servlet-class>com.project.controller.admin.AddSocietyServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -69,22 +69,24 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>EventAdminServlet</servlet-name>
-        <servlet-class>com.project.controller.EventAdminServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EventAdminServlet</servlet-name>
-        <url-pattern>/admin/events</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>HomepageServlet</servlet-name>
         <servlet-class>com.project.controller.HomepageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomepageServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddEventServlet</servlet-name>
+        <servlet-class>com.project.controller.admin.AddEventServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddEventServlet</servlet-name>
+        <url-pattern>/AddEventServlet</url-pattern>
+    </servlet-mapping>
+
 
 
 

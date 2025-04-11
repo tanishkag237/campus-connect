@@ -15,7 +15,7 @@ public class SocietyListServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("societies.jsp");
         dispatcher.forward(request, response);
 
-        System.out.println("Fetched societies: " + societies.size());
+      //  System.out.println("Fetched societies: " + societies.size());
 
     }
 }

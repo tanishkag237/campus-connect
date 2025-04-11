@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard - Campus Connect</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
 </head>
 <body>
 <div class="container">

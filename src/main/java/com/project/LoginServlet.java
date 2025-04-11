@@ -30,8 +30,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("username", rs.getString("username"));
                 session.setAttribute("fullName", rs.getString("full_name"));
 
-                RequestDispatcher rd = request.getRequestDispatcher("/home");
-                rd.forward(request, response);
+                response.sendRedirect("home");
             } else {
                 request.setAttribute("errorMessage", "Invalid username/email or password.");
                 RequestDispatcher rd = request.getRequestDispatcher("error.jsp");

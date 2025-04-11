@@ -101,20 +101,25 @@ public class EventDAO {
         return events;
     }
 
-    public void addEvent(Event event) {
-        String sql = "INSERT INTO events (society_id, title, description, location, event_date) VALUES (?, ?, ?, ?, ?)";
+    public static boolean addEvent(Event event) {
+        String query = "INSERT INTO events (title, description, event_date, society_id) VALUES (?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, event.getSocietyId());
-            stmt.setString(2, event.getTitle());
-            stmt.setString(3, event.getDescription());
-            stmt.setString(4, event.getLocation());
-            stmt.setTimestamp(5, new Timestamp(event.getEventDate().getTime()));
-            stmt.executeUpdate();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+
+            ps.setString(1, event.getTitle());
+            ps.setString(2, event.getDescription());
+            ps.setDate(3, new java.sql.Date(event.getEventDate().getTime()));
+            ps.setInt(4, event.getSocietyId());
+
+            int rows = ps.executeUpdate();
+            return rows > 0;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
+
 
     public void updateEvent(Event event) {
         String sql = "UPDATE events SET society_id = ?, title = ?, description = ?, location = ?, event_date = ? WHERE event_id = ?";
@@ -141,5 +146,23 @@ public class EventDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static boolean insertEvent(Event event) {
+        boolean inserted = false;
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "INSERT INTO events (title, description, event_date, society_id) VALUES (?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, event.getTitle());
+            ps.setString(2, event.getDescription());
+            ps.setDate(3, new java.sql.Date(event.getEventDate().getTime()));
+            ps.setInt(4, event.getSocietyId());
+
+            int rows = ps.executeUpdate();
+            inserted = rows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return inserted;
     }
 }
