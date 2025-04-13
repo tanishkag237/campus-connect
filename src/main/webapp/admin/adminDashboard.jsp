@@ -18,7 +18,29 @@
       <a href="addSociety.jsp" class="btn btn-primary">➕ Add New Society</a>
       <a href="#">✏️ Edit Existing Societies</a>
       <a href="addEvent.jsp" class="btn btn-primary">➕ Add Event</a>
-      <a href="editEvents.jsp" class="btn btn-info">✏️ Edit Events</a>
+<%--      <a href="editEvents.jsp" class="btn btn-info">✏️ Edit Events</a>--%>
+      <%@ page import="java.util.List" %>
+      <%@ page import="com.project.model.Event" %>
+
+      <%
+        List<Event> events = (List<Event>) request.getAttribute("events");
+        if (events != null) {
+          for (Event event : events) {
+      %>
+      <div>
+        <p><strong><%= event.getTitle() %></strong></p>
+        <a href="../EditEventServlet?id=<%= event.getEventId() %>" class="btn btn-info">✏️ Edit</a>
+      </div>
+      <%
+        }
+      } else {
+      %>
+      <p>No events found.</p>
+      <%
+        }
+      %>
+
+
 
     </div>
 

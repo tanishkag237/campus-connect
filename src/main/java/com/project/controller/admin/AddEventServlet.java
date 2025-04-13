@@ -20,7 +20,10 @@ public class AddEventServlet extends HttpServlet {
             String title = request.getParameter("title");
             String description = request.getParameter("description");
             String eventDateStr = request.getParameter("eventDate");
+            String location = request.getParameter("location");
             int societyId = Integer.parseInt(request.getParameter("societyId"));
+
+            System.out.println("Received Location: " + location);
 
             // Convert String to java.util.Date
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -34,6 +37,7 @@ public class AddEventServlet extends HttpServlet {
             event.setTitle(title);
             event.setDescription(description);
             event.setEventDate(sqlDate);
+            event.setLocation(location);
             event.setSocietyId(societyId);
 
             boolean success = EventDAO.insertEvent(event);

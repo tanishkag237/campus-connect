@@ -87,6 +87,28 @@
         <url-pattern>/AddEventServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>EditEventServlet</servlet-name>
+        <servlet-class>com.project.controller.admin.EditEventServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EditEventServlet</servlet-name>
+        <url-pattern>/EditEventServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EventListServlet</servlet-name>
+        <servlet-class>com.project.controller.admin.EventListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EventListServlet</servlet-name>
+        <url-pattern>/EventListServlet</url-pattern>
+    </servlet-mapping>
+
+
+
 
 
 

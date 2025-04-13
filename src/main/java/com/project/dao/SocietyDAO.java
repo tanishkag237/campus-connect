@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SocietyDAO {
-    public List<Society> getAllSocieties() {
+    public static List<Society> getAllSocieties() {
         List<Society> societies = new ArrayList<>();
         try (Connection conn = DBConnection.getConnection()) {
             String sql = "SELECT * FROM societies";
