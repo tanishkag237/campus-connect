@@ -1,56 +1,39 @@
-<%@ page import="java.util.*,com.project.model.Event,com.project.model.Society" %>
+<%@ page import="java.util.*, com.project.model.Event" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Edit Event</title>
-  <link rel="stylesheet" href="../css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Events</title>
+  <!-- Add your CSS here for styling -->
 </head>
 <body>
-<div class="form-container">
-  <h2>Edit Event</h2>
-  <% Event event = (Event) request.getAttribute("event"); %>
-  <% if (event == null) { %>
-  <p style='color:red;'>⚠️ Event not found.</p>
-  <% } else { %>
-  <!-- form goes here -->
+<h2>Edit Events</h2>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Event Title</th>
+    <th>Event Description</th>
+    <th>Event Date</th>
+    <th>Location</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%
+    List<Event> events = (List<Event>) request.getAttribute("events");
+    for (Event event : events) {
+  %>
+  <tr>
+    <td><%= event.getTitle() %></td>
+    <td><%= event.getDescription() %></td>
+    <td><%= event.getEventDate() %></td>
+    <td><%= event.getLocation() %></td>
+    <td><a href="editEventDetails.jsp?eventId=<%= event.getEventId() %>" class="btn btn-info">✏️ Edit</a></td>
+  </tr>
   <% } %>
-
-
-
-  <form action="../EditEventServlet" method="post">
-    <input type="hidden" name="eventId" value="<%= ((Event)request.getAttribute("event")).getEventId() %>" />
-
-    <input type="text" name="title" placeholder="Title"
-           value="<%= ((Event)request.getAttribute("event")).getTitle() %>" required />
-
-    <textarea name="description" placeholder="Description"><%= ((Event)request.getAttribute("event")).getDescription() %></textarea>
-
-    <input type="date" name="eventDate"
-           value="<%= ((Event)request.getAttribute("event")).getEventDate().toString() %>" required />
-
-    <input type="text" name="location" placeholder="Location"
-           value="<%= ((Event)request.getAttribute("event")).getLocation() %>" required />
-
-    <select name="societyId" required>
-      <%
-        List<Society> societies = (List<Society>) request.getAttribute("societies");
-        int selectedSocietyId = ((Event)request.getAttribute("event")).getSocietyId();
-        for (Society s : societies) {
-      %>
-      <option value="<%= s.getSoId() %>" <%= (s.getSoId() == selectedSocietyId) ? "selected" : "" %>>
-        <%= s.getName() %>
-      </option>
-      <% } %>
-    </select>
-
-    <input type="submit" value="Update Event" />
-  </form>
-
-  <% if (request.getAttribute("errorMessage") != null) { %>
-  <p class="error"><%= request.getAttribute("errorMessage") %></p>
-  <% } %>
-</div>
+  </tbody>
+</table>
 </body>
 </html>
