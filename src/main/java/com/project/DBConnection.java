@@ -1,5 +1,7 @@
 package com.project;
 
+import com.project.util.ConfigUtil;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,7 +9,7 @@ import java.sql.SQLException;
 public class DBConnection {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/cc";
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "sqlpass23"; // ✅ Change this to your actual MySQL password
+    private static final String JDBC_PASSWORD = ConfigUtil.get("JDBC_PASSWORD");;
 
     // Static block to load JDBC driver
     static {
