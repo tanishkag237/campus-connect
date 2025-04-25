@@ -37,8 +37,8 @@
                             count++;
                 %>
                 <div class="event-card">
-                    <div class="event-date">
-                        <p><%= sdf.format(event.getEventDate()) %></p>
+                    <div class="event-date" >
+                        <p style="color: white"><%= sdf.format(event.getEventDate()) %></p>
                     </div>
                     <h3><%= event.getTitle() %></h3>
                     <p>Organized By : <%= event.getSocietyName() %></p>
