@@ -11,6 +11,22 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
+    }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 15px;
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .back-button:hover {
+      background-color: #5a6268;
     }
     .login-container {
       background: #fff;
@@ -51,6 +67,11 @@
   </style>
 </head>
 <body>
+<!-- Back button positioned in the top-left corner -->
+<form action="../home" method="get">
+  <button type="submit" class="back-button">Back to Dashboard</button>
+</form>
+
 <div class="login-container">
   <h2>Admin Login</h2>
   <% String error = (String) request.getAttribute("errorMessage"); %>

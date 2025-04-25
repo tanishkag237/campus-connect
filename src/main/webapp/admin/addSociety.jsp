@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <jsp:include page="../include/header.jsp" />
+<%--    <jsp:include page="../include/header.jsp" />--%>
 
     <main class="main-content">
         <h2>Add New Society</h2>
@@ -41,7 +41,7 @@
         </form>
     </main>
 
-    <jsp:include page="../include/footer.jsp" />
+<%--    <jsp:include page="../include/footer.jsp" />--%>
 </div>
 </body>
 </html>

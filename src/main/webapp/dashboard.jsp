@@ -16,16 +16,8 @@
     <main class="main-content">
         <section class="hero-section">
             <div class="hero-content">
-
-
                 <h2>Welcome to Campus Connect</h2>
                 <p>Your one-stop platform for all college society information and events.</p>
-
-<%--                <div class="hero-buttons">--%>
-<%--                    <a href="#" class="btn btn-primary">Login</a>--%>
-<%--                    <a href="#" class="btn btn-secondary">Register</a>--%>
-<%--                </div>--%>
-
             </div>
         </section>
 
@@ -39,8 +31,10 @@
                     if (upcomingEvents != null && !upcomingEvents.isEmpty()) {
 
                         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("MMM dd, yyyy HH:mm");
+                        int count = 0;
                         for (Event event : upcomingEvents) {
-
+                            if (count >= 3) break; // Stop after displaying 3 events
+                            count++;
                 %>
                 <div class="event-card">
                     <div class="event-date">
@@ -79,7 +73,7 @@
                     if (societies != null && !societies.isEmpty()) {
                         int count = 0;
                         for (Society society : societies) {
-                            if (count >= 3) break;
+                            if (count >= 3) break; // Stop after displaying 3 societies
                             count++;
                 %>
                 <div class="society-card">
@@ -88,7 +82,7 @@
                     </div>
                     <h3><%= society.getName() %></h3>
                     <p><%= society.getDescription() %></p>
-                    <a href="#" class="btn btn-small">View Details</a>
+<%--                    <a href="#" class="btn btn-small">View Details</a>--%>
                 </div>
                 <%
                     }
@@ -99,7 +93,6 @@
                     }
                 %>
             </div>
-
 
             <div class="view-all">
                 <a href="${pageContext.request.contextPath}/societies" class="btn btn-secondary">View All Societies</a>

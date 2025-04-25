@@ -1,7 +1,8 @@
 <header class="header" style="background-color: #041538;  color: white;">
  <div class="admin-header">
      <h3 class="greet">Welcome, Admin!</h3>
-     <a href="../../login.jsp" class="logout">Logout</a>
+     <a href="${pageContext.request.contextPath}/admin/LogoutServlet" class="logout">Logout</a>
+
  </div>
 </header>
 
