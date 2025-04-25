@@ -17,7 +17,7 @@
             <li><a href="./events.jsp">Events</a></li>
 <%--            <li><a href="notifications.jsp">Notifications</a></li>--%>
             <li><a href="./login.jsp">Logout</a></li>
-            <li><a href="./admin/adminLogin.jsp">Admin</a></li>
+<%--            <li><a href="./admin/adminLogin.jsp">Admin</a></li>--%>
         </ul>
     </nav>
 </header>

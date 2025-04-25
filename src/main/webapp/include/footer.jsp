@@ -23,8 +23,15 @@
                 <a href="#" class="social-link">Facebook</a>
                 <a href="#" class="social-link">Twitter</a>
                 <a href="#" class="social-link">Instagram</a>
+            </div><br>
+            <div>
+
+                <h3><a href="./admin/adminLogin.jsp">Admin</a> </h3>
             </div>
+
+
         </div>
+
     </div>
 
     <div class="footer-bottom">

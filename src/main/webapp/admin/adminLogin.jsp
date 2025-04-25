@@ -58,7 +58,7 @@
   <div class="error"><%= error %></div>
   <% } %>
 
-  <form action="../admin/adminDashboard.jsp" method="post">
+  <form action="AdminLoginServlet" method="post">
     <input type="text" name="username" placeholder="Admin Username" required>
     <input type="password" name="password" placeholder="Password" required>
     <button type="submit">Login</button>
@@ -66,4 +66,3 @@
 </div>
 </body>
 </html>
-e

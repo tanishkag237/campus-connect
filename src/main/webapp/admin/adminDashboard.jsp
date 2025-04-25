@@ -8,11 +8,11 @@
 </head>
 <body>
 <div class="container">
-  <jsp:include page="adminHeader.jsp" />
+  <jsp:include page="include/adminHeader.jsp" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
 
-  <main class="main-content">
-    <h2>Welcome, Admin!</h2>
+  <main class="main-content" style="text-align: center">
+    <h2>Welcome to Admin Dashboard!</h2>
     <p>Manage societies and monitor recent changes to society events.</p>
 
     <div class="admin-actions">
@@ -28,7 +28,7 @@
 
   </main>
 
-  <jsp:include page="../include/footer.jsp" />
+  <jsp:include page="include/adminFooter.jsp" />
 </div>
 </body>
 </html>
